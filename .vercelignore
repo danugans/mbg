@@ -1,4 +1,1 @@
-node_modules
-.git
-tests
-storage/logs
+public/index.php
