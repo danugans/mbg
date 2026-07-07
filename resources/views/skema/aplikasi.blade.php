@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    
     <link rel="icon" href="https://fav.farm/🍳" />
     <title>Buku Kas Dapur MBG</title>
-    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -52,14 +53,12 @@
                 x-show="!bukaNav" 
                 class="md:hidden fixed top-4 left-4 z-50 flex items-center gap-1.5 bg-green-deep text-white px-3 py-2 rounded-md text-xs font-mono shadow-md transition-all duration-200"
                 x-cloak>
-       
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
             Menu
         </button>
         
-        <!-- Konten Utama -->
         <main class="flex-1 min-w-0 px-4 pt-20 pb-8 sm:px-6 md:px-10 md:py-8">
             @yield('konten')
         </main>
@@ -67,7 +66,6 @@
     
     @include('komponen.footer')
     
-    <!-- AlpineJS -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
