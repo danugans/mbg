@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" href="https://fav.farm/🍳" />
     <title>Buku Kas Dapur MBG</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,18 +39,35 @@
 </head>
 <body class="font-sans text-ink min-h-screen antialiased">
     <div class="flex min-h-screen w-full" x-data="{ bukaNav: false }">
-        @include('komponen.navigasi_samping')
-        <div x-show="bukaNav" @click="bukaNav = false" class="fixed inset-0 bg-black/40 z-30 md:hidden" x-cloak></div>
-        <button @click="bukaNav = !bukaNav" class="md:hidden fixed top-3 left-3 z-40 flex items-center gap-1.5 bg-green-deep text-white px-3 py-2 rounded-md text-xs font-mono shadow-md">Menu</button>
-        <main class="flex-1 min-w-0 px-4 pt-16 pb-8 sm:px-6 md:px-10 md:py-8">
+
+        @include('komponen.sidebar')
+
+        <div x-show="bukaNav" 
+             @click="bukaNav = false" 
+             class="fixed inset-0 bg-black/40 z-40 md:hidden" 
+             x-cloak>
+        </div>
+        
+        <button @click="bukaNav = !bukaNav" 
+                x-show="!bukaNav" 
+                class="md:hidden fixed top-4 left-4 z-50 flex items-center gap-1.5 bg-green-deep text-white px-3 py-2 rounded-md text-xs font-mono shadow-md transition-all duration-200"
+                x-cloak>
+       
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            Menu
+        </button>
+        
+        <!-- Konten Utama -->
+        <main class="flex-1 min-w-0 px-4 pt-20 pb-8 sm:px-6 md:px-10 md:py-8">
             @yield('konten')
         </main>
     </div>
     
-    @include('komponen.kaki_halaman')
+    @include('komponen.footer')
     
+    <!-- AlpineJS -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
