@@ -14,7 +14,7 @@
       </button>
     </div>
     <nav class="flex flex-col gap-0.5 flex-1 overflow-y-auto">
-       <a href="{{ route('dashboard') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('dashboard') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Dashboard</a>
+    <a href="{{ route('ringkasan') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('ringkasan') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Dashboard</a>
         <a href="{{ route('master.indeks') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('master.indeks') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Master Barang</a>
         <a href="{{ route('olahan.indeks') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('olahan.indeks') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Barang Olahan</a>
         <a href="{{ route('inventaris.indeks') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('inventaris.indeks') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Barang Inventaris</a>

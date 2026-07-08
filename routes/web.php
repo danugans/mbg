@@ -1,15 +1,38 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterBarangController;
 use App\Http\Controllers\BarangOlahanController;
 use App\Http\Controllers\BarangInventarisController;
 use App\Http\Controllers\PengeluaranOperasionalController;
 use App\Http\Controllers\LaporanBulananController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-// Halaman Utama (Dashboard)
-Route::get('/', [DashboardController::class, 'indeks'])->name('dashboard');
+// Root -> login view
+Route::get('/', function () {
+    return view('masuk.masuk');
+})->name('login');
+
+Route::get('/masuk', function () { return view('masuk.masuk'); });
+Route::post('/masuk', function (Request $request) {
+    $data = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'password' => ['required'],
+    ]);
+
+    $credentials = ['name' => $data['name'], 'password' => $data['password']];
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->route('ringkasan');
+    }
+
+    return back()->withErrors(['name' => 'Nama pengguna atau password salah.'])->withInput();
+})->name('login.submit');
+
+// Ringkasan / Dashboard
+Route::get('/ringkasan', [DashboardController::class, 'indeks'])->name('ringkasan');
 
 // Master Barang
 Route::prefix('master-barang')->name('master.')->group(function () {
