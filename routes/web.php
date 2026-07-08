@@ -1,21 +1,40 @@
 <?php
 
-use App\Http\Controllers\DapurController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MasterBarangController;
+use App\Http\Controllers\BarangOlahanController;
+use App\Http\Controllers\BarangInventarisController;
+use App\Http\Controllers\PengeluaranOperasionalController;
+use App\Http\Controllers\LaporanBulananController;
 
-Route::get('/', [DapurController::class, 'ringkasan'])->name('ringkasan');
+// Halaman Utama (Dashboard)
+Route::get('/', [DashboardController::class, 'indeks'])->name('dashboard');
 
-Route::get('/master-barang', [DapurController::class, 'masterBarang'])->name('master.indeks');
-Route::post('/master-barang/simpan', [DapurController::class, 'simpanBarang'])->name('master.simpan');
-Route::delete('/master-barang/hapus/{id}', [DapurController::class, 'hapusBarang'])->name('master.hapus');
+// Master Barang
+Route::prefix('master-barang')->name('master.')->group(function () {
+    Route::get('/', [MasterBarangController::class, 'indeks'])->name('indeks');
+    Route::post('/simpan', [MasterBarangController::class, 'simpan'])->name('simpan');
+    Route::delete('/hapus/{id}', [MasterBarangController::class, 'hapus'])->name('hapus');
+});
 
-Route::get('/barang-olahan', [DapurController::class, 'barangOlahan'])->name('olahan.indeks');
-Route::post('/barang-olahan/mutasi', [DapurController::class, 'simpanMutasiStok'])->name('olahan.mutasi');
+// Barang Olahan (Bahan Baku)
+Route::prefix('barang-olahan')->name('olahan.')->group(function () {
+    Route::get('/', [BarangOlahanController::class, 'indeks'])->name('indeks');
+    Route::post('/mutasi', [BarangOlahanController::class, 'simpanMutasi'])->name('mutasi');
+});
 
-Route::get('/barang-inventaris', [DapurController::class, 'barangInventaris'])->name('inventaris.indeks');
-Route::post('/barang-inventaris/service', [DapurController::class, 'simpanService'])->name('inventaris.service');
+// Barang Inventaris (Aset Tetap)
+Route::prefix('barang-inventaris')->name('inventaris.')->group(function () {
+    Route::get('/', [BarangInventarisController::class, 'indeks'])->name('indeks');
+    Route::post('/service', [BarangInventarisController::class, 'simpanService'])->name('service');
+});
 
-Route::get('/pengeluaran-operasional', [DapurController::class, 'pengeluaranOperasional'])->name('operasional.indeks');
-Route::post('/pengeluaran-operasional/simpan', [DapurController::class, 'simpanPengeluaran'])->name('operasional.simpan');
+// Pengeluaran Operasional
+Route::prefix('pengeluaran-operasional')->name('operasional.')->group(function () {
+    Route::get('/', [PengeluaranOperasionalController::class, 'indeks'])->name('indeks');
+    Route::post('/simpan', [PengeluaranOperasionalController::class, 'simpan'])->name('simpan');
+});
 
-Route::get('/laporan-bulanan', [DapurController::class, 'laporanBulanan'])->name('laporan.indeks');
+// Laporan Bulanan
+Route::get('/laporan-bulanan', [LaporanBulananController::class, 'indeks'])->name('laporan.indeks');
