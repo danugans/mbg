@@ -20,5 +20,6 @@
         <a href="{{ route('inventaris.indeks') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('inventaris.indeks') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Barang Inventaris</a>
         <a href="{{ route('operasional.indeks') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('operasional.indeks') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Pengeluaran Operasional</a>
         <a href="{{ route('laporan.indeks') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('laporan.indeks') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Laporan Bulanan</a>
+        <a href="{{ route('akses') }}" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-sm {{ Route::is('akses') ? 'bg-mustard text-ink font-semibold' : 'hover:bg-white/10' }}">Akses Pengguna</a>
     </nav>
 </aside>

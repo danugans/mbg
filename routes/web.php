@@ -61,3 +61,7 @@ Route::prefix('pengeluaran-operasional')->name('operasional.')->group(function (
 
 // Laporan Bulanan
 Route::get('/laporan-bulanan', [LaporanBulananController::class, 'indeks'])->name('laporan.indeks');
+// Akses Pengguna (static page)
+Route::get('/akses', function () {
+    return view('halaman.akses');
+})->name('akses');
